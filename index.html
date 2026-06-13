@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NX-07 // NYX</title>
+
+  <style>
+
+    body {
+
+      margin: 0;
+
+      height: 100vh;
+
+      background: radial-gradient(circle at center, #10202a 0%, #020509 70%);
+
+      color: #7ffcff;
+
+      font-family: monospace;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      overflow: hidden;
+
+    }
+
+    .terminal {
+
+      border: 1px solid #1fdde8;
+
+      padding: 30px;
+
+      width: 85%;
+
+      max-width: 700px;
+
+      box-shadow: 0 0 25px #1fdde8;
+
+      background: rgba(0, 20, 25, 0.75);
+
+    }
+
+    h1 {
+
+      font-size: 48px;
+
+      margin: 0 0 10px;
+
+      letter-spacing: 6px;
+
+      text-shadow: 0 0 15px #7ffcff;
+
+    }
+
+    h2 {
+
+      color: #ffffff;
+
+      font-weight: normal;
+
+      margin-bottom: 30px;
+
+    }
+
+    p {
+
+      font-size: 18px;
+
+      line-height: 1.7;
+
+    }
+
+    .warning {
+
+      color: #ff3b6b;
+
+      text-shadow: 0 0 10px #ff3b6b;
+
+    }
+
+    .cursor {
+
+      animation: blink 1s infinite;
+
+    }
+
+    @keyframes blink {
+
+      50% { opacity: 0; }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="terminal">
+
+    <h1>NX-07</h1>
+
+    <h2>RECON PLATFORM ONLINE</h2>
+
+    <p>&gt; Verbindung hergestellt</p>
+
+    <p>&gt; NYX-Kern erkannt</p>
+
+    <p>&gt; Pilotenschnittstelle aktiv</p>
+
+    <p>&gt; Status: <span class="warning">NICHT VOLLSTÄNDIG SYNCHRONISIERT</span></p>
+
+    <br>
+
+    <p class="warning">„Das ist früher aufgewacht, als es sollte.“</p>
+
+    <p>&gt; Zugriff autorisiert<span class="cursor">_</span></p>
+
+  </div>
+
+</body>
+
+</html>
