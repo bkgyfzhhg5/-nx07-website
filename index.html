@@ -10,61 +10,21 @@
 
   <title>NX-07 // NYX</title>
 
-#reactivateBtn {
-
-    background: transparent;
-
-    color: #00eaff;
-
-    border: 2px solid #00eaff;
-
-    padding: 12px 25px;
-
-    margin-top: 20px;
-
-    font-family: monospace;
-
-    font-size: 16px;
-
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    box-shadow:
-
-        0 0 10px #00eaff,
-
-        0 0 20px #00eaff;
-
-    transition: all 0.3s ease;
-
-}
-
-#reactivateBtn:hover {
-
-    background: rgba(0,234,255,0.15);
-
-    box-shadow:
-
-        0 0 20px #00eaff,
-
-        0 0 40px #00eaff;
-
-}
-
   <style>
 
     body {
 
       margin: 0;
 
-      height: 100vh;
+      min-height: 100vh;
 
-      background: radial-gradient(circle at center, #10202a 0%, #020509 70%);
+      background:
 
-      color: #7ffcff;
+        radial-gradient(circle at center, #092326 0%, #020607 55%, #000 100%);
 
-      font-family: monospace;
+      color: #9ffcff;
+
+      font-family: "Courier New", monospace;
 
       display: flex;
 
@@ -76,57 +36,123 @@
 
     }
 
+    body::before {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      background:
+
+        linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+
+        linear-gradient(90deg, rgba(0,255,255,0.04) 1px, transparent 1px);
+
+      background-size: 40px 40px;
+
+      opacity: 0.25;
+
+      pointer-events: none;
+
+    }
+
+    body::after {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      background: repeating-linear-gradient(
+
+        to bottom,
+
+        rgba(255,255,255,0.03),
+
+        rgba(255,255,255,0.03) 1px,
+
+        transparent 2px,
+
+        transparent 5px
+
+      );
+
+      opacity: 0.18;
+
+      pointer-events: none;
+
+    }
+
     .terminal {
 
-      border: 1px solid #1fdde8;
+      width: 80%;
 
-      padding: 30px;
+      max-width: 520px;
 
-      width: 85%;
+      padding: 34px;
 
-      max-width: 700px;
+      border: 2px solid #00eaff;
 
-      box-shadow: 0 0 25px #1fdde8;
+      box-shadow:
 
-      background: rgba(0, 20, 25, 0.75);
+        0 0 20px #00eaff,
+
+        0 0 60px rgba(0,234,255,0.35),
+
+        inset 0 0 30px rgba(0,234,255,0.15);
+
+      background: rgba(0, 10, 14, 0.86);
+
+      position: relative;
+
+      z-index: 2;
 
     }
 
     h1 {
 
-      font-size: 48px;
+      margin: 0 0 12px;
 
-      margin: 0 0 10px;
+      font-size: 52px;
 
       letter-spacing: 6px;
 
-      text-shadow: 0 0 15px #7ffcff;
+      color: #00eaff;
+
+      text-shadow: 0 0 14px #00eaff;
 
     }
 
     h2 {
 
+      margin: 0 0 28px;
+
+      font-size: 17px;
+
       color: #ffffff;
-
-      font-weight: normal;
-
-      margin-bottom: 30px;
 
     }
 
     p {
 
-      font-size: 18px;
+      font-size: 17px;
 
-      line-height: 1.7;
+      line-height: 1.6;
+
+      margin: 14px 0;
 
     }
 
     .warning {
 
-      color: #ff3b6b;
+      color: #ff3b8d;
 
-      text-shadow: 0 0 10px #ff3b6b;
+      text-shadow: 0 0 10px #ff3b8d;
+
+      font-weight: bold;
 
     }
 
@@ -138,7 +164,79 @@
 
     @keyframes blink {
 
-      50% { opacity: 0; }
+      0%, 50% { opacity: 1; }
+
+      51%, 100% { opacity: 0; }
+
+    }
+
+    #reactivateBtn {
+
+      margin-top: 28px;
+
+      background: transparent;
+
+      color: #00eaff;
+
+      border: 2px solid #00eaff;
+
+      padding: 14px 22px;
+
+      font-family: "Courier New", monospace;
+
+      font-size: 15px;
+
+      letter-spacing: 2px;
+
+      cursor: pointer;
+
+      width: 100%;
+
+      box-shadow:
+
+        0 0 12px #00eaff,
+
+        inset 0 0 12px rgba(0,234,255,0.2);
+
+      text-shadow: 0 0 8px #00eaff;
+
+      transition: 0.25s;
+
+    }
+
+    #reactivateBtn:hover {
+
+      background: rgba(0,234,255,0.15);
+
+      box-shadow:
+
+        0 0 25px #00eaff,
+
+        0 0 55px rgba(0,234,255,0.7),
+
+        inset 0 0 18px rgba(0,234,255,0.3);
+
+    }
+
+    #statusOutput {
+
+      margin-top: 22px;
+
+      color: #00eaff;
+
+      display: none;
+
+    }
+
+    .small {
+
+      margin-top: 30px;
+
+      font-size: 12px;
+
+      opacity: 0.55;
+
+      letter-spacing: 2px;
 
     }
 
@@ -168,21 +266,55 @@
 
     <p>&gt; Zugriff autorisiert<span class="cursor">_</span></p>
 
+    <button id="reactivateBtn" onclick="startNX07()">
+
+      &gt; REAKTIVIERUNG STARTEN
+
+    </button>
+
+    <div id="statusOutput">
+
+      <p>&gt; Audiosignal empfangen</p>
+
+      <p>&gt; NX-07 lokalisiert</p>
+
+      <p>&gt; Verbindung zu NYX hergestellt</p>
+
+      <p>&gt; Plattformstatus: <span class="warning">AKTIV</span></p>
+
+    </div>
+
+    <p class="small">SYSTEM // NYX-CORE // SIGNAL-TRACE-07</p>
+
   </div>
 
-<button id="reactivateBtn"
+  <audio id="nx07audio" loop>
 
-onclick="document.getElementById('nx07audio').play()">
+    <source src="nx-07-awakening.mp3" type="audio/mpeg">
 
-REAKTIVIERUNG STARTEN
+  </audio>
 
-</button>
+  <script>
 
-<audio id="nx07audio" loop>
+    function startNX07() {
 
-  <source src="nx-07-awakening.mp3" type="audio/mpeg">
+      const audio = document.getElementById("nx07audio");
 
-</audio>
+      const button = document.getElementById("reactivateBtn");
+
+      const output = document.getElementById("statusOutput");
+
+      audio.play();
+
+      button.innerText = "> REAKTIVIERUNG LÄUFT";
+
+      button.disabled = true;
+
+      output.style.display = "block";
+
+    }
+
+  </script>
 
 </body>
 
